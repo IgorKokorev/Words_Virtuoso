@@ -1,7 +1,6 @@
 package wordsvirtuoso
 
-import java.io.*
-import java.util.SortedSet
+import java.io.File
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
@@ -64,18 +63,22 @@ fun main(args: Array<String>) {
 }
 
 fun printWrongChars() {
+    print("\u001B[48:5:14m")
     for (ch in wrongChars) print(ch)
-    println("")
+    println("\u001B[0m")
 }
 
 fun printClue(guessed: String, word: String) {
     var clue = ""
     for (i in word.indices) {
-        if (word[i] == guessed[i]) clue += word[i].uppercaseChar()
-        else if (guessed.contains(word[i])) clue += word[i]
+        val ch = word[i].uppercaseChar()
+        if (word[i] == guessed[i])
+            clue += "\u001B[48:5:10m$ch\u001B[0m"
+        else if (guessed.contains(word[i]))
+            clue += "\u001B[48:5:11m$ch\u001B[0m"
         else {
-            clue += '_'
-            wrongChars.add(word[i].uppercaseChar())
+            clue += "\u001B[48:5:7m$ch\u001B[0m"
+            wrongChars.add(ch)
         }
     }
     clues.add(clue)

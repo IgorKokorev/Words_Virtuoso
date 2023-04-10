@@ -181,15 +181,22 @@ class WordsVirtuosoTest : StageTest<Any>() {
     }
 
     @DynamicTest(order = 9, files = "wordFiles")
-    fun normalRun4File(): CheckResult {
+    fun normalRun7File(): CheckResult {
         val co = CheckOutput()
         co.setArguments("oneword1.txt", "oneword1.txt")
         if (!co.start("Words Virtuoso", "Input a 5-letter word:"))
             return CheckResult(false, "Your output should contain \"Words Virtuoso\"")
 
-        if (!co.input("azure", "AZURE", "Correct!", "Amazing luck! The solution was found at once."))
+        if (!co.input("azure",
+                "\u001B[48:5:10mA\u001B[0m" +
+                        "\u001B[48:5:10mZ\u001B[0m" +
+                        "\u001B[48:5:10mU\u001B[0m" +
+                        "\u001B[48:5:10mR\u001B[0m" +
+                        "\u001B[48:5:10mE\u001B[0m",
+                "Correct!", "Amazing luck! The solution was found at once."))
             return CheckResult(false,
-                "Your output should contain \"AZURE\nCorrect!\nAmazing luck! The solution was found at once.\"")
+                "Your output should contain \"AZURE\nCorrect!\nAmazing luck! The solution was found at once.\"" +
+                        " with correct coloring.")
 
         if (!co.programIsFinished())
             return CheckResult(false, "The application didn't exit.")
@@ -198,23 +205,52 @@ class WordsVirtuosoTest : StageTest<Any>() {
     }
 
     @DynamicTest(order = 10, files = "wordFiles")
-    fun normalRun5File(): CheckResult {
+    fun normalRun8File(): CheckResult {
+        val strCover = "\u001B[48:5:10mC\u001B[0m" +
+                "\u001B[48:5:10mO\u001B[0m" +
+                "\u001B[48:5:7mV\u001B[0m" +
+                "\u001B[48:5:7mE\u001B[0m" +
+                "\u001B[48:5:7mR\u001B[0m"
+        val strGuild = "\u001B[48:5:7mG\u001B[0m" +
+                "\u001B[48:5:11mU\u001B[0m" +
+                "\u001B[48:5:7mI\u001B[0m" +
+                "\u001B[48:5:10mL\u001B[0m" +
+                "\u001B[48:5:10mD\u001B[0m"
+        val strCould = "\u001B[48:5:10mC\u001B[0m" +
+                "\u001B[48:5:10mO\u001B[0m" +
+                "\u001B[48:5:10mU\u001B[0m" +
+                "\u001B[48:5:10mL\u001B[0m" +
+                "\u001B[48:5:10mD\u001B[0m"
+
         val co = CheckOutput()
         co.setArguments("threewords1.txt", "oneword2.txt")
         if (!co.start("Words Virtuoso", "Input a 5-letter word:"))
             return CheckResult(false, "Your output should contain \"Words Virtuoso\"")
 
-        if (!co.input("cover", "CO___", "ERV", "Input a 5-letter word:"))
+        if (!co.input("cover",
+                strCover,
+                "\u001B[48:5:14mERV\u001B[0m",
+                "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"CO___\nERV\nInput a 5-letter word:\"")
+                "Your output should contain \"COVER\nERV\nInput a 5-letter word:\" " +
+                        "with correct coloring.")
 
-        if (!co.input("guild", "CO___", "_u_LD", "EGIRV", "Input a 5-letter word:"))
+        if (!co.input("guild",
+                strCover,
+                strGuild,
+                "\u001B[48:5:14mEGIRV\u001B[0m", "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"CO___\n_u_LD\nEGIRV\nInput a 5-letter word:\"")
+                "Your output should contain \"COVER\nGUILD\nEGIRV\nInput a 5-letter word:\" " +
+                        "with correct coloring.")
 
-        if (!co.input("could", "CO___", "_u_LD", "COULD", "Correct!"))
+        if (!co.input("could",
+                strCover,
+                strGuild,
+                strCould,
+                "Correct!"))
             return CheckResult(false,
-                "Your output should contain \"CO___\n_u_LD\nCOULD\nCorrect!\"")
+                "Your output should contain \"COVER\nGUILD\nCOULD\nCorrect!\" " +
+                        "with correct coloring.")
 
         val reportStr = co.getLastOutput().substring(co.position + 1)
         if ("The solution was found after 3 tries in \\d+ seconds.".toRegex().find(reportStr) == null)
@@ -228,27 +264,68 @@ class WordsVirtuosoTest : StageTest<Any>() {
     }
 
     @DynamicTest(order = 11, files = "wordFiles")
-    fun normalRun6File(): CheckResult {
+    fun normalRun9File(): CheckResult {
+        val strMouse = "\u001B[48:5:10mM\u001B[0m" +
+                "\u001B[48:5:7mO\u001B[0m" +
+                "\u001B[48:5:11mU\u001B[0m" +
+                "\u001B[48:5:11ms\u001B[0m" +
+                "\u001B[48:5:7mE\u001B[0m"
+        val strPoker = "\u001B[48:5:7mP\u001B[0m" +
+                "\u001B[48:5:7mO\u001B[0m" +
+                "\u001B[48:5:7mK\u001B[0m" +
+                "\u001B[48:5:7mE\u001B[0m" +
+                "\u001B[48:5:7mR\u001B[0m"
+        val strTulip = "\u001B[48:5:7mT\u001B[0m" +
+                "\u001B[48:5:10mU\u001B[0m" +
+                "\u001B[48:5:7mL\u001B[0m" +
+                "\u001B[48:5:10mI\u001B[0m" +
+                "\u001B[48:5:7mP\u001B[0m"
+        val strMusic = "\u001B[48:5:10mM\u001B[0m" +
+                "\u001B[48:5:10mU\u001B[0m" +
+                "\u001B[48:5:10mS\u001B[0m" +
+                "\u001B[48:5:10mI\u001B[0m" +
+                "\u001B[48:5:10mC\u001B[0m"
+
         val co = CheckOutput()
         co.setArguments("fourwords1.txt", "oneword3.txt")
         if (!co.start("Words Virtuoso", "Input a 5-letter word:"))
             return CheckResult(false, "Your output should contain \"Words Virtuoso\"")
 
-        if (!co.input("mouse", "M_us_", "EO", "Input a 5-letter word:"))
+        if (!co.input("mouse",
+                strMouse,
+                "\u001B[48:5:14mEO\u001B[0m",
+                "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"M_us_\nEO\nInput a 5-letter word:\"")
+                "Your output should contain \"MOUSE\nEO\nInput a 5-letter word:\" " +
+                        "with correct coloring.")
 
-        if (!co.input("poker", "M_us_", "_____", "EKOPR", "Input a 5-letter word:"))
+        if (!co.input("poker",
+                strMouse,
+                strPoker,
+                "\u001B[48:5:14mEKOPR\u001B[0m",
+                "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"M_us_\n_____\nEKOPR\nInput a 5-letter word:\"")
+                "Your output should contain \"MOUSE\nPOKER\nEKOPR\nInput a 5-letter word:\" " +
+                        "with correct coloring.")
 
-        if (!co.input("tulip", "M_us_", "_____", "_U_I_", "EKLOPRT", "Input a 5-letter word:"))
+        if (!co.input("tulip",
+                strMouse,
+                strPoker,
+                strTulip,
+                "\u001B[48:5:14mEKLOPRT\u001B[0m", "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"M_us_\n_____\n_U_I_\nEKLOPRT\nInput a 5-letter word:\"")
+                "Your output should contain \"MOUSE\nPOKER\nTULIP\nEKLOPRT\nInput a 5-letter word:\" " +
+                        "with correct coloring.")
 
-        if (!co.input("music", "M_us_", "_____", "_U_I_", "MUSIC", "Correct!"))
+        if (!co.input("music",
+                strMouse,
+                strPoker,
+                strTulip,
+                strMusic,
+                "Correct!"))
             return CheckResult(false,
-                "Your output should contain \"M_us_\n_____\n_U_I_\nMUSIC\nCorrect!\"")
+                "Your output should contain \"MOUSE\nPOKER\nTULIP\nMUSIC\nCorrect!\" " +
+                        "with correct coloring.")
 
         val reportStr = co.getLastOutput().substring(co.position + 1)
         if ("The solution was found after 4 tries in \\d+ seconds.".toRegex().find(reportStr) == null)
