@@ -1,12 +1,16 @@
 package wordsvirtuoso
+
 import java.io.*
+import java.util.SortedSet
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
 class VirtuosoException( str: String ): Exception(str)
 
-var words = setOf<String>()
-var candidates = setOf<String>()
+var words = setOf<String>() // words dictionary
+var candidates = setOf<String>() // candidates for secret word
+var clues = mutableListOf<String>() // list of clues given to user
+var wrongChars = sortedSetOf<Char>() // wrong input characters
 
 fun main(args: Array<String>) {
     try {
@@ -19,9 +23,12 @@ fun main(args: Array<String>) {
 
     // get a random word from candidates
     val guessed = candidates.elementAt(Random.nextInt(0, candidates.size))
+    var attempt = 0
+    val startTime = System.currentTimeMillis()
     while (true) {
         println("\nInput a 5-letter word:")
         val nextWord = readln().lowercase()
+        attempt++
         if (nextWord.equals("exit", true)) {
             println("\nThe game is over.")
             exitProcess(0)
@@ -42,22 +49,37 @@ fun main(args: Array<String>) {
                 if ( !words.contains(nextWord) ) {
                     println("The input word isn't included in my words list.")
                     continue
-                } else if (guessed.equals(nextWord)) {
-                    println("Correct!")
-                    exitProcess(0)
                 } else printClue(guessed, nextWord)
+                if (guessed.equals(nextWord)) {
+                    val endTime = System.currentTimeMillis()
+                    val seconds = (endTime - startTime) / 1_000L
+                    println("\nCorrect!")
+                    if (attempt == 1) println("Amazing luck! The solution was found at once.")
+                    else println("The solution was found after $attempt tries in $seconds seconds.")
+                    exitProcess(0)
+                } else printWrongChars()
             }
         }
     }
 }
 
-fun printClue(guessed: String, word: String) {
-    for (i in word.indices) {
-        if (word[i] == guessed[i]) print(word[i].uppercase())
-        else if (guessed.contains(word[i])) print(word[i])
-        else print('_')
-    }
+fun printWrongChars() {
+    for (ch in wrongChars) print(ch)
     println("")
+}
+
+fun printClue(guessed: String, word: String) {
+    var clue = ""
+    for (i in word.indices) {
+        if (word[i] == guessed[i]) clue += word[i].uppercaseChar()
+        else if (guessed.contains(word[i])) clue += word[i]
+        else {
+            clue += '_'
+            wrongChars.add(word[i].uppercaseChar())
+        }
+    }
+    clues.add(clue)
+    for (elem in clues) println(elem)
 }
 
 fun checkFiles(args: Array<String>) {

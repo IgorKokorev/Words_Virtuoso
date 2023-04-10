@@ -181,15 +181,15 @@ class WordsVirtuosoTest : StageTest<Any>() {
     }
 
     @DynamicTest(order = 9, files = "wordFiles")
-    fun normalRun1File(): CheckResult {
+    fun normalRun4File(): CheckResult {
         val co = CheckOutput()
         co.setArguments("oneword1.txt", "oneword1.txt")
         if (!co.start("Words Virtuoso", "Input a 5-letter word:"))
             return CheckResult(false, "Your output should contain \"Words Virtuoso\"")
 
-        if (!co.input("azure", "Correct!"))
+        if (!co.input("azure", "AZURE", "Correct!", "Amazing luck! The solution was found at once."))
             return CheckResult(false,
-                "Your output should contain \"Correct!\"")
+                "Your output should contain \"AZURE\nCorrect!\nAmazing luck! The solution was found at once.\"")
 
         if (!co.programIsFinished())
             return CheckResult(false, "The application didn't exit.")
@@ -198,23 +198,28 @@ class WordsVirtuosoTest : StageTest<Any>() {
     }
 
     @DynamicTest(order = 10, files = "wordFiles")
-    fun normalRun2File(): CheckResult {
+    fun normalRun5File(): CheckResult {
         val co = CheckOutput()
         co.setArguments("threewords1.txt", "oneword2.txt")
         if (!co.start("Words Virtuoso", "Input a 5-letter word:"))
             return CheckResult(false, "Your output should contain \"Words Virtuoso\"")
 
-        if (!co.input("cover", "CO___", "Input a 5-letter word:"))
+        if (!co.input("cover", "CO___", "ERV", "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"CO___\nInput a 5-letter word:\"")
+                "Your output should contain \"CO___\nERV\nInput a 5-letter word:\"")
 
-        if (!co.input("guild", "_u_LD", "Input a 5-letter word:"))
+        if (!co.input("guild", "CO___", "_u_LD", "EGIRV", "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"_u_LD\nInput a 5-letter word:\"")
+                "Your output should contain \"CO___\n_u_LD\nEGIRV\nInput a 5-letter word:\"")
 
-        if (!co.input("could", "Correct!"))
+        if (!co.input("could", "CO___", "_u_LD", "COULD", "Correct!"))
             return CheckResult(false,
-                "Correct!")
+                "Your output should contain \"CO___\n_u_LD\nCOULD\nCorrect!\"")
+
+        val reportStr = co.getLastOutput().substring(co.position + 1)
+        if ("The solution was found after 3 tries in \\d+ seconds.".toRegex().find(reportStr) == null)
+            return CheckResult(false,
+                "Wrong message on number of tries and lapsed time.")
 
         if (!co.programIsFinished())
             return CheckResult(false, "The application didn't exit.")
@@ -223,27 +228,32 @@ class WordsVirtuosoTest : StageTest<Any>() {
     }
 
     @DynamicTest(order = 11, files = "wordFiles")
-    fun normalRun3File(): CheckResult {
+    fun normalRun6File(): CheckResult {
         val co = CheckOutput()
         co.setArguments("fourwords1.txt", "oneword3.txt")
         if (!co.start("Words Virtuoso", "Input a 5-letter word:"))
             return CheckResult(false, "Your output should contain \"Words Virtuoso\"")
 
-        if (!co.input("mouse", "M_us_", "Input a 5-letter word:"))
+        if (!co.input("mouse", "M_us_", "EO", "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"M_us_\nInput a 5-letter word:\"")
+                "Your output should contain \"M_us_\nEO\nInput a 5-letter word:\"")
 
-        if (!co.input("poker", "_____", "Input a 5-letter word:"))
+        if (!co.input("poker", "M_us_", "_____", "EKOPR", "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"_____\nInput a 5-letter word:\"")
+                "Your output should contain \"M_us_\n_____\nEKOPR\nInput a 5-letter word:\"")
 
-        if (!co.input("tulip", "_U_I_", "Input a 5-letter word:"))
+        if (!co.input("tulip", "M_us_", "_____", "_U_I_", "EKLOPRT", "Input a 5-letter word:"))
             return CheckResult(false,
-                "Your output should contain \"_U_I_\nInput a 5-letter word:\"")
+                "Your output should contain \"M_us_\n_____\n_U_I_\nEKLOPRT\nInput a 5-letter word:\"")
 
-        if (!co.input("music", "Correct!"))
+        if (!co.input("music", "M_us_", "_____", "_U_I_", "MUSIC", "Correct!"))
             return CheckResult(false,
-                "Correct!")
+                "Your output should contain \"M_us_\n_____\n_U_I_\nMUSIC\nCorrect!\"")
+
+        val reportStr = co.getLastOutput().substring(co.position + 1)
+        if ("The solution was found after 4 tries in \\d+ seconds.".toRegex().find(reportStr) == null)
+            return CheckResult(false,
+                "Wrong message on number of tries and lapsed time.")
 
         if (!co.programIsFinished())
             return CheckResult(false, "The application didn't exit.")
@@ -252,7 +262,7 @@ class WordsVirtuosoTest : StageTest<Any>() {
     }
 
     @DynamicTest(order = 12, files = "wordFiles")
-    fun checkIfWordsRandomFile(): CheckResult {
+    fun checkIfWordsRandomFile2(): CheckResult {
         val words = listOf("cover", "guild", "could")
         val counts = IntArray(3)
 
@@ -262,7 +272,7 @@ class WordsVirtuosoTest : StageTest<Any>() {
             co.start("Words Virtuoso", "Input a 5-letter word:")
 
             for ((index, word) in words.withIndex()) {
-                if (co.input(word, "Correct!")) {
+                if (co.getNextOutput(word).contains("Correct!")) {
                     counts[index]++
                     break
                 }
