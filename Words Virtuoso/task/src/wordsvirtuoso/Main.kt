@@ -21,14 +21,43 @@ fun main(args: Array<String>) {
     val guessed = candidates.elementAt(Random.nextInt(0, candidates.size))
     while (true) {
         println("\nInput a 5-letter word:")
-        val nextWord = readln()
+        val nextWord = readln().lowercase()
         if (nextWord.equals("exit", true)) {
-            println("")
+            println("\nThe game is over.")
+            exitProcess(0)
         }
         when (isWordCorrect(nextWord)) {
-            1 ->
+            1 -> {
+                println("The input isn't a 5-letter word.")
+                continue
+            }
+            2 -> {
+                println("One or more letters of the input aren't valid.")
+                continue
+            }
+            3 -> {
+                println("The input has duplicate letters.")
+            }
+            0 -> {
+                if ( !words.contains(nextWord) ) {
+                    println("The input word isn't included in my words list.")
+                    continue
+                } else if (guessed.equals(nextWord)) {
+                    println("Correct!")
+                    exitProcess(0)
+                } else printClue(guessed, nextWord)
+            }
         }
     }
+}
+
+fun printClue(guessed: String, word: String) {
+    for (i in word.indices) {
+        if (word[i] == guessed[i]) print(word[i].uppercase())
+        else if (guessed.contains(word[i])) print(word[i])
+        else print('_')
+    }
+    println("")
 }
 
 fun checkFiles(args: Array<String>) {

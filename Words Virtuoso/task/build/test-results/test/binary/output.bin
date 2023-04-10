@@ -19,3 +19,281 @@
 [1;31m
 Start test 6[0m
 Words Virtuoso
+
+Input a 5-letter word:
+[1;31m
+Start test 7[0m
+Words Virtuoso
+
+Input a 5-letter word:
+	> trains
+"The input isn't a 5-letter word.
+
+Input a 5-letter word:
+> One
+"The input isn't a 5-letter word.
+
+Input a 5-letter word:
+> Four
+"The input isn't a 5-letter word.
+
+Input a 5-letter word:
+> Two Words
+"The input isn't a 5-letter word.
+
+Input a 5-letter word:
+> trouvée
+"The input isn't a 5-letter word.
+
+Input a 5-letter word:
+> ΗΛΙΟΣ
+0One or more letters of the input aren't valid.
+
+Input a 5-letter word:
+	> étage
+0One or more letters of the input aren't valid.
+
+Input a 5-letter word:
+> word1
+0One or more letters of the input aren't valid.
+
+Input a 5-letter word:
+> 12345
+0One or more letters of the input aren't valid.
+
+Input a 5-letter word:
+> walls
+"The input has duplicate letters.
+
+Input a 5-letter word:
+> hello
+"The input has duplicate letters.
+
+Input a 5-letter word:
+> pizza
+"The input has duplicate letters.
+
+Input a 5-letter word:
+> exit
+
+The game is over.
+[1;31m
+Start test 8[0m
+Words Virtuoso
+
+Input a 5-letter word:
+> abcde
+1The input word isn't included in my words list.
+
+Input a 5-letter word:
+> KLMNO
+1The input word isn't included in my words list.
+
+Input a 5-letter word:
+> qwert
+1The input word isn't included in my words list.
+
+Input a 5-letter word:
+> AsDfG
+1The input word isn't included in my words list.
+
+Input a 5-letter word:
+> exit
+
+The game is over.
+[1;31m
+Start test 9[0m
+Words Virtuoso
+
+Input a 5-letter word:
+> azure
+
+Correct!
+[1;31m
+Start test 10[0m
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+[1;31m
+Start test 11[0m
+Words Virtuoso
+
+Input a 5-letter word:
+> mouse
+M_us_
+
+Input a 5-letter word:
+> poker
+_____
+
+Input a 5-letter word:
+> tulip
+_U_I_
+
+Input a 5-letter word:
+> music
+
+Correct!
+[1;31m
+Start test 12[0m
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+CO___
+
+Input a 5-letter word:
+> guild
+_u_LD
+
+Input a 5-letter word:
+> could
+
+Correct!
+Words Virtuoso
+
+Input a 5-letter word:
+> cover
+_____
+
+Input a 5-letter word:
+> guild
+
+Correct!
