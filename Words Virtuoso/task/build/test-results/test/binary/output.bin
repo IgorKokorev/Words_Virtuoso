@@ -15,4 +15,7 @@
 DError: 9 invalid words were found in the wrongcandidates.txt file.
 [1;31m
 Start test 5[0m
-FError: 5 candidate words are not included in the somewords.txt file.
+FError: 3 candidate words are not included in the somewords.txt file.
+[1;31m
+Start test 6[0m
+Words Virtuoso

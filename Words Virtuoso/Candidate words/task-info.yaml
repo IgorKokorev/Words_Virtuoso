@@ -194,8 +194,8 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/22747#comment
-status: Failed
+status: Solved
 feedback:
-  message: Failed to launch checking
-  time: "Mon, 10 Apr 2023 18:55:55 UTC"
+  message: Congratulations!
+  time: "Mon, 10 Apr 2023 19:25:41 UTC"
 record: -1
