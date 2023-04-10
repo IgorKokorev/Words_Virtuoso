@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Introduction_to_Interfaces-Getting_familar_with_implementing_Interfaces" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting familar with implementing Interfaces" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="Words Virtuoso" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting familar with implementing Interfaces">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting familar with implementing Interfaces/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting familar with implementing Interfaces/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting familar with implementing Interfaces/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

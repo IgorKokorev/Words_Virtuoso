@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Introduction_to_Interfaces-Getting_rid_of_copy-pasting__constructing_an_interface" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting rid of copy-pasting  constructing an interface" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="Words Virtuoso" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting rid of copy-pasting  constructing an interface">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting rid of copy-pasting  constructing an interface/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting rid of copy-pasting  constructing an interface/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Introduction to Interfaces/Getting rid of copy-pasting  constructing an interface/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

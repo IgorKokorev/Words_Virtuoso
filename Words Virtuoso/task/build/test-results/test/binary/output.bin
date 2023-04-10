@@ -1,0 +1,18 @@
+[1;31m
+Start test 1[0m
+#Error: Wrong number of arguments.
+#Error: Wrong number of arguments.
+#Error: Wrong number of arguments.
+[1;31m
+Start test 2[0m
+2Error: The words file noexist.txt doesn't exist.
+<Error: The candidate words file noexist.txt doesn't exist.
+[1;31m
+Start test 3[0m
+?Error: 7 invalid words were found in the wrongwords.txt file.
+[1;31m
+Start test 4[0m
+DError: 9 invalid words were found in the wrongcandidates.txt file.
+[1;31m
+Start test 5[0m
+FError: 5 candidate words are not included in the somewords.txt file.
